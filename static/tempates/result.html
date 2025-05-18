@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Индекс массы тела</title>
+	<link rel="stylesheet" href="../css/result.css">
+	<script src="../js/result.js"></script>
+</head>
+<body>
+<div class="wrapper">
+	<div class="main">
+		<div class="card">
+			<h1>Значение ИМТ</h1>
+			<div class="bmi-value" id="bmi">--</div>
+			<div class="bmi-label" id="label">--</div>
+			<div class="description" id="desc">--</div>
+
+			<h3 class="bar-header">Визуализация ИМТ</h3>
+			<div class="bar-container">
+				<div class="bar">
+					<div class="zone underweight"></div>
+					<div class="zone normal"></div>
+					<div class="zone overweight"></div>
+					<div class="zone obese"></div>
+				</div>
+				<div class="indicator" id="indicator" style="left: 0;"></div>
+			</div>
+			<div class="legend">
+				<div class="legend-item">
+					<div class="legend-color" style="background:#3c84fa;"></div>
+					<span>&lt;18.5 (Недовес)</span>
+				</div>
+				<div class="legend-item">
+					<div class="legend-color" style="background:#66bb6a;"></div>
+					<span>18.5–24.9 (Норма)</span>
+				</div>
+				<div class="legend-item">
+					<div class="legend-color" style="background:#ffa726;"></div>
+					<span>25–29.9 (Избыточный вес)</span>
+				</div>
+				<div class="legend-item">
+					<div class="legend-color" style="background:#ef5350;"></div>
+					<span>&ge;30 (Ожирение)</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		&copy; 2025 BMI Calculator. Created by x0djers.
+	</footer>
+</div>
+</body>
+</html>
