@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter&display=swap" >
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../css/main.css">
+    <script src="../js/main.js"></script>
+</head>
+<body>
+<main>
+    <h1>Вычисли свой ИМТ</h1>
+
+    <div class="input-group">
+        <label for="weightInput">
+            <span class="material-symbols-outlined">weight</span>
+            Вес:
+        </label>
+        <div class="input-wrapper">
+            <input type="number" id="weightInput" min="1" placeholder="Введите вес">
+            <span class="unit" id="weightUnit">kg</span>
+        </div>
+
+        <label for="heightInput">
+            <span class="material-symbols-outlined">straighten</span>
+            Рост:
+        </label>
+        <div class="input-wrapper">
+            <input type="number" id="heightInput" min="1" placeholder="Введите рост">
+            <span class="unit" id="heightUnit">cm</span>
+        </div>
+    </div>
+
+    <div class="units">
+        <button id="metricBtn" class="active">Метрическая</button>
+        <button id="imperialBtn">Имперская</button>
+    </div>
+
+    <button type="button" class="calculate-btn">
+        <i class="fas fa-calculator"></i>
+        Рассчитать
+    </button>
+</main>
+
+<footer>
+    &copy; 2025 BMI Calculator. Created by x0djers.
+</footer>
+
+</body>
+</html>
