@@ -30,15 +30,38 @@ document.addEventListener('DOMContentLoaded', () => {
         errorMessage.classList.remove('visible');
     })
 
-    calculateBtn.addEventListener("click", function () {
+    calculateBtn.addEventListener("click", async function () {
         const weight = parseFloat(weightInput.value);
         const height = parseFloat(heightInput.value);
+        const units = imperialBtn.classList.contains('active') ? 'imperial' : 'metric';
 
         if (isNaN(weight) || weight <= 0 || isNaN(height) || height <= 0) {
             errorMessage.classList.add('visible');
         } else {
             errorMessage.classList.remove('visible');
         }
+            try {
+                const response = await fetch('/api/bmi', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ height, weight, units })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Произошла внутренняя ошибка сервера.');
+                }
+
+                const data = await response.json();
+                const bmi = data.bmi;
+
+                localStorage.setItem('bmi', bmi);
+
+                window.location.href = '/result';
+
+            } catch (err) {
+                errorMessage.textContent = err.message;
+                errorMessage.classList.add('visible');
+            }
     });
 
     function blockInvalidChars(event) {
