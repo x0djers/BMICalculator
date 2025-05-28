@@ -3,8 +3,8 @@
 
 #include "../lib/mongoose/mongoose.h"
 
-void routeRequest(struct mg_connection *conn,
-                  int event,
-                  void *eventData);
+void routeRequest(struct mg_connection *connection,
+                       int event,
+                       void *eventData);
 
 #endif

@@ -11,7 +11,7 @@
 #define MIME_CSS "text/css"
 #define MIME_JS "application/javascript"
 #define MIME_PLAIN "text/plain"
-
+#define MIME_JSON "application/json"
 
 
 #endif
