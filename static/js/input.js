@@ -39,7 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
             errorMessage.classList.add('visible');
         } else {
             errorMessage.classList.remove('visible');
-        }
             try {
                 const response = await fetch('/api/bmi', {
                     method: 'POST',
@@ -62,6 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 errorMessage.textContent = err.message;
                 errorMessage.classList.add('visible');
             }
+        }
     });
 
     function blockInvalidChars(event) {
