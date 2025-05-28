@@ -1,10 +1,10 @@
 #include <stdlib.h>
 
+#include <log.h>
+#include <mongoose.h>
+
 #include "server.h"
-#include "../router/router.h"
-#include "../lib/logger/log.h"
-#include "../constants/types.h"
-#include "../lib/mongoose/mongoose.h"
+#include <router/router.h>
 
 void getServerAddress(ServerAddress *addr) {
     snprintf(addr->fullUrl, sizeof(addr->fullUrl),
@@ -16,7 +16,7 @@ ErrorCode createServer(Server* server, ServerAddress address) {
 
     server->mgr = malloc(sizeof(struct mg_mgr));
 
-    errorCode = (!server->mgr) ? SERVER_CREAT_FAILED_ERROR : NONE_ERROR;
+    errorCode = !server->mgr ? SERVER_CREAT_FAILED_ERROR : NONE_ERROR;
 
     if (errorCode == NONE_ERROR) {
         mg_mgr_init(server->mgr);

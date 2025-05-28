@@ -1,5 +1,11 @@
 CC = gcc
-FLAGS = -Wall -Wextra -g -DDEBUG
+
+INCLUDE_DIRS = -Isrc/lib/json \
+ 			   -Isrc/lib/mongoose \
+ 			   -Isrc/lib/logger \
+ 			   -Isrc
+
+FLAGS = -Wall -Wextra -g -DDEBUG $(INCLUDE_DIRS)
 
 SRC_DIR = ./src
 BUILD_DIR = ./build

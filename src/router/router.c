@@ -1,12 +1,12 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "../lib/logger/log.h"
-#include "../lib/mongoose/mongoose.h"
+#include <log.h>
+#include <mongoose.h>
 
 #include "router.h"
-#include "../handlers/handlers.h"
-#include "../constants/constants.h"
+#include <handlers/handlers.h>
+#include <constants/constants.h>
 
 void routeRequest(struct mg_connection *connection, const int event, void *eventData) {
     if (event == MG_EV_HTTP_MSG) {

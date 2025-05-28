@@ -1,5 +1,7 @@
-#include "server/server.h"
-#include "lib/logger/log.h"
+#include <log.h>
+
+#include <server/server.h>
+
 
 int main() {
     log_set_level(LOG_INFO);

@@ -1,10 +1,10 @@
 #include <sys/stat.h>
 
-#include "../../lib/logger/log.h"
-#include "../../lib/mongoose/mongoose.h"
+#include <log.h>
+#include <mongoose.h>
 
-#include "../handlers.h"
-#include "../../constants/constants.h"
+#include <handlers/handlers.h>
+#include <constants/constants.h>
 
 void getRequiredPath(const char* baseDir,
                      const struct mg_str uri,

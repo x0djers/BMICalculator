@@ -1,9 +1,9 @@
 #include <sys/stat.h>
 
-#include "../../lib/logger/log.h"
-#include "../../lib/mongoose/mongoose.h"
+#include <log.h>
+#include <mongoose.h>
 
-#include "../handlers.h"
+#include <handlers/handlers.h>
 
 ErrorCode handlePage(struct mg_connection* connection,
                        struct mg_http_message* httpMessage,

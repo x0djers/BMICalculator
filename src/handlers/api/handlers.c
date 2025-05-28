@@ -1,10 +1,10 @@
-#include "../../lib/json/json.h"
-#include "../../lib/logger/log.h"
-#include "../../lib/mongoose/mongoose.h"
+#include <log.h>
+#include <json.h>
+#include <mongoose.h>
 
-#include "../handlers.h"
-#include "../../services/bmi/bmi.h"
-#include "../../constants/constants.h"
+#include <handlers/handlers.h>
+#include <services/bmi/bmi.h>
+#include <constants/constants.h>
 
 ErrorCode parseApiParameters(const char* bodyStr,
                              float* parsedWeight,
