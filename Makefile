@@ -1,16 +1,16 @@
 CC = gcc
 
-INCLUDE_DIRS = -Isrc/lib/json \
- 			   -Isrc/lib/mongoose \
- 			   -Isrc/lib/logger \
- 			   -Isrc
+INCLUDE_DIRS = -Ibackend/lib/json \
+ 			   -Ibackend/lib/mongoose \
+ 			   -Ibackend/lib/logger \
+ 			   -Ibackend
 
 FLAGS = -Wall -Wextra -g -DDEBUG $(INCLUDE_DIRS)
 
-SRC_DIR = ./src
+SRC_DIR = ./backend
 BUILD_DIR = ./build
 BIN_DIR = ./bin
-BUILD_SRC_DIR = $(BUILD_DIR)/src
+BUILD_SRC_DIR = $(BUILD_DIR)/backend
 
 LIB_SRC := $(shell find $(SRC_DIR) -type f -name "*.c" ! -name "main.c")
 MAIN_SRC := $(SRC_DIR)/main.c
