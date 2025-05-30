@@ -26,7 +26,7 @@ void routeRequest(struct mg_connection *connection, const int event, void *event
                    mg_match(httpMessage->method, mg_str("POST"), NULL)) {
             handleBmiApi(connection, httpMessage);
 
-        } else if (mg_match(uri, mg_str("/css/*"), NULL) ||
+        } else if (mg_match(uri, mg_str("/styles/*"), NULL) ||
                    mg_match(uri, mg_str("/js/*"), NULL)) {
             handleStatic(connection, httpMessage);
 
