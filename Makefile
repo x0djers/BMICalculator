@@ -1,8 +1,8 @@
 CC = gcc
 
-INCLUDE_DIRS = -Ibackend/lib/json \
- 			   -Ibackend/lib/mongoose \
- 			   -Ibackend/lib/logger \
+INCLUDE_DIRS = -Ibackend/vendor/json \
+ 			   -Ibackend/vendor/mongoose \
+ 			   -Ibackend/vendor/logger \
  			   -Ibackend
 
 FLAGS = -Wall -Wextra -g -DDEBUG $(INCLUDE_DIRS)

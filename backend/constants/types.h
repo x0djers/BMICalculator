@@ -1,7 +1,7 @@
 #ifndef TYPES_H
 #define TYPES_H
 
-#include "../lib/mongoose/mongoose.h"
+#include <mongoose.h>
 
 typedef void (*Router)(struct mg_connection *, int, void *);
 
