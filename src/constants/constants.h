@@ -2,7 +2,7 @@
 #define CONSTANTS_H
 
 #define STATIC_DIR "frontend"
-#define TEMPLATE_DIR STATIC_DIR "/templates"
+#define TEMPLATE_DIR STATIC_DIR "/public"
 
 #define PATH_INPUT_HTML TEMPLATE_DIR "/input.html"
 #define PATH_RESULT_HTML TEMPLATE_DIR "/result.html"
