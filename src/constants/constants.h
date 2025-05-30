@@ -1,7 +1,7 @@
 #ifndef CONSTANTS_H
 #define CONSTANTS_H
 
-#define STATIC_DIR "static"
+#define STATIC_DIR "frontend"
 #define TEMPLATE_DIR STATIC_DIR "/templates"
 
 #define PATH_INPUT_HTML TEMPLATE_DIR "/input.html"
