@@ -3,7 +3,7 @@
 #include <log.h>
 #include <mongoose.h>
 
-#include <handlers/handlers.h>
+#include "pages.h"
 
 ErrorCode handlePage(struct mg_connection* connection,
                        struct mg_http_message* httpMessage,

@@ -3,7 +3,7 @@
 #include <log.h>
 #include <mongoose.h>
 
-#include <handlers/handlers.h>
+#include "static.h"
 #include <constants/constants.h>
 
 void getRequiredPath(const char* baseDir,

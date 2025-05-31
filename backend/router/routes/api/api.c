@@ -2,7 +2,7 @@
 #include <json.h>
 #include <mongoose.h>
 
-#include <handlers/handlers.h>
+#include "api.h"
 #include <services/bmi/bmi.h>
 #include <constants/constants.h>
 

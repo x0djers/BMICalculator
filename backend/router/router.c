@@ -5,7 +5,9 @@
 #include <mongoose.h>
 
 #include "router.h"
-#include <handlers/handlers.h>
+#include "routes/api/api.h"
+#include "routes/pages/pages.h"
+#include "routes/static/static.h"
 #include <constants/constants.h>
 
 void routeRequest(struct mg_connection *connection, const int event, void *eventData) {
