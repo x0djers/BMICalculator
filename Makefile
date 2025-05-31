@@ -21,21 +21,32 @@ ALL_OBJ := $(LIB_OBJ) $(MAIN_OBJ)
 
 TARGET = $(BIN_DIR)/server
 
+RESET  = \033[0m
+GREEN  = \033[1;32m
+YELLOW = \033[1;33m
+BLUE   = \033[1;34m
+
 all: create-dirs $(TARGET)
+	@printf "$(GREEN)[✓] Build complete: %s$(RESET)\n" "$(TARGET)"
 
 rebuild: clean all
 
 create-dirs:
-	mkdir -p $(BIN_DIR) $(dir $(ALL_OBJ))
+	@mkdir -p $(BIN_DIR) $(dir $(ALL_OBJ))
+	@printf "$(BLUE)[•] Creating directories...$(RESET)\n"
 
 $(BUILD_SRC_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
-	$(CC) $(FLAGS) -c $< -o $@
+	@printf "$(YELLOW)[•] Compiling: %s$(RESET)\n" "$<"
+	@$(CC) $(FLAGS) -c $< -o $@
 
 $(TARGET): $(ALL_OBJ)
-	$(CC) $(FLAGS) $^ -o $@
+	@printf "$(YELLOW)[•] Linking %s...$(RESET)\n" "$(TARGET)"
+	@$(CC) $(FLAGS) $^ -o $@
 
 clean:
-	rm -rf $(BUILD_DIR) $(BIN_DIR)
+	@printf "$(BLUE)[•] Cleaning build and binary directories...$(RESET)\n"
+	@rm -rf $(BUILD_DIR) $(BIN_DIR)
+	@printf "$(GREEN)[✓] Clean complete$(RESET)\n"
 
 .PHONY: all rebuild clean
