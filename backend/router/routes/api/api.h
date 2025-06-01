@@ -3,7 +3,7 @@
 
 #include <mongoose.h>
 
-#include <constants/errors/errors.h>
+#include <errors/errors.h>
 
 ErrorCode handleBmiApi(struct mg_connection* connection,
                        const struct mg_http_message* httpMessage);
