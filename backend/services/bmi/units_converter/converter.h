@@ -1,5 +1,5 @@
-#ifndef UNITS_H
-#define UNITS_H
+#ifndef CONVERTER_H
+#define CONVERTER_H
 
 /**
   @enum UnitCategory

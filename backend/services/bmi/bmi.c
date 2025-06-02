@@ -1,7 +1,7 @@
 #include <string.h>
 
 #include "bmi.h"
-#include <utils/units/units.h>
+#include "units_converter/converter.h"
 
 MeasuredValue createHeightValue(const float height,
                                 const char* units) {

@@ -1,6 +1,6 @@
 #include <string.h>
 
-#include "units.h"
+#include "converter.h"
 
 UnitType getSIUnit(const UnitType inputUnit) {
     UnitType resultUnit;
