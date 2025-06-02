@@ -2,10 +2,11 @@
 #define CONSTANTS_H
 
 #define STATIC_DIR "frontend"
-#define TEMPLATE_DIR STATIC_DIR "/public"
+#define PAGES_DIR STATIC_DIR "/public"
 
-#define PATH_INPUT_HTML TEMPLATE_DIR "/input.html"
-#define PATH_RESULT_HTML TEMPLATE_DIR "/result.html"
+#define INPUT_PAGE_DIR PAGES_DIR "/input.html"
+#define RESULT_PAGE_DIR PAGES_DIR "/result.html"
+#define HONE_DIR INPUT_PAGE_DIR
 
 #define MIME_HTML "text/html"
 #define MIME_CSS "text/css"

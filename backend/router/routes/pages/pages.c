@@ -4,13 +4,34 @@
 #include <mongoose.h>
 
 #include "pages.h"
+#include <constants/constants.h>
+
+void getRequiredPagePath(const char* baseDir,
+                     const struct mg_str uri,
+                     char* outputPath,
+                     const size_t outputPathLen) {
+    if (uri.len == 1 && uri.buf[0] == '/') {
+        snprintf(outputPath, outputPathLen, HONE_DIR);
+    } else {
+        snprintf(outputPath,
+                 outputPathLen,
+                 "%s%.*s.html",
+                 baseDir,
+                 (int)uri.len,
+                 uri.buf);
+    }
+}
 
 ErrorCode handlePage(struct mg_connection* connection,
-                       struct mg_http_message* httpMessage,
-                       const char* pagePath) {
+                     struct mg_http_message* httpMessage) {
     ErrorCode errorCode = NONE_ERROR;
     struct stat st;
+    char pagePath[256];
 
+    getRequiredPagePath(PAGES_DIR,
+                        httpMessage->uri,
+                        pagePath,
+                        sizeof(pagePath));
 
     log_info("Handling request for page with URI: %.*s",
              (int)httpMessage->uri.len, httpMessage->uri.buf);

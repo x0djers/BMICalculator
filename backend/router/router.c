@@ -19,10 +19,10 @@ void routeRequest(struct mg_connection *connection, const int event, void *event
 
         if (mg_match(uri, mg_str("/"), NULL) ||
             mg_match(uri, mg_str("/input"), NULL)) {
-            handlePage(connection, httpMessage, PATH_INPUT_HTML);
+            handlePage(connection, httpMessage);
 
         } else if (mg_match(uri, mg_str("/result"), NULL)) {
-            handlePage(connection, httpMessage, PATH_RESULT_HTML);
+            handlePage(connection, httpMessage);
 
         } else if (mg_match(uri, mg_str("/api/bmi"), NULL) &&
                    mg_match(httpMessage->method, mg_str("POST"), NULL)) {
