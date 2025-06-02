@@ -5,6 +5,7 @@
 
 #include "static.h"
 #include <constants/constants.h>
+#include <router/routes/errors/errors.h>
 
 void getRequiredPath(const char* baseDir,
                      const struct mg_str uri,
@@ -41,10 +42,7 @@ ErrorCode handleStatic(struct mg_connection* connection,
     } else {
         errorCode = FILE_NOT_FOUND_ERROR;
         log_error("%s (%s)", errorsMessages[errorCode], requiredPath);
-        mg_http_reply(connection,
-                      404,
-                      "Content-Type: text/plain\r\n",
-                      "404 Not Found\n");
+        sendErrorMessage(connection, errorCode);
 
     }
 

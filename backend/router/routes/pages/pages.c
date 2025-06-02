@@ -5,6 +5,7 @@
 
 #include "pages.h"
 #include <constants/constants.h>
+#include <router/routes/errors/errors.h>
 
 void getRequiredPagePath(const char* baseDir,
                      const struct mg_str uri,
@@ -44,10 +45,7 @@ ErrorCode handlePage(struct mg_connection* connection,
     } else {
         errorCode = PAGE_NOT_FOUND_ERROR;
         log_error("%s (%s)", errorsMessages[errorCode], pagePath);
-        mg_http_reply(connection,
-                      404,
-                      "Content-Type: text/plain\r\n",
-                      "404 Not Found\n");
+        sendErrorMessage(connection, errorCode);
     }
 
     return errorCode;

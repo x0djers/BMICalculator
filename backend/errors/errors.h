@@ -15,5 +15,6 @@ typedef enum {
 } ErrorCode;
 
 extern const char* errorsMessages[ERRORS_COUNT];
+extern const int errorsHttpCodes[ERRORS_COUNT];
 
 #endif

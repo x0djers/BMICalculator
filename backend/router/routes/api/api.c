@@ -4,7 +4,7 @@
 
 #include "api.h"
 #include <services/bmi/bmi.h>
-#include <constants/constants.h>
+#include <router/routes/errors/errors.h>
 
 ErrorCode parseApiParameters(const char* bodyStr,
                              float* parsedWeight,
@@ -51,10 +51,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
     if (body_str == NULL) {
         errorCode = MEMORY_ALLOCATION_ERROR;
         log_error("%s", errorCode);
-        mg_http_reply(connection,
-                      500,
-                      "",
-                      "Internal Server Error");
+        sendErrorMessage(connection, errorCode);
     } else {
         errorCode = parseApiParameters(body_str, &weight, &height, &units);
 
@@ -64,12 +61,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
         if (errorCode == INVALID_API_REQUEST_ERROR ||
             errorCode == INVALID_API_PARAMETERS_ERROR) {
             log_error("%s", errorCode);
-            mg_http_reply(connection,
-                          400,
-                          "Content-Type: %s\r\n",
-                          MIME_JSON,
-                          "{\"error\":\"%s\"}",
-                          errorsMessages[errorCode]);
+            sendErrorMessage(connection, errorCode);
         } else {
             const float bmi = calculateBMI(height, weight, units);
 
