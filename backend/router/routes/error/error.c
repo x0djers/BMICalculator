@@ -1,4 +1,4 @@
-#include "errors.h"
+#include "error.h"
 
 #include <constants/constants.h>
 

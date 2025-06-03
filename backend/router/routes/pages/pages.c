@@ -5,7 +5,7 @@
 
 #include "pages.h"
 #include <constants/constants.h>
-#include <router/routes/errors/errors.h>
+#include <router/routes/error/error.h>
 
 void getRequiredPagePath(const char* baseDir,
                      const struct mg_str uri,

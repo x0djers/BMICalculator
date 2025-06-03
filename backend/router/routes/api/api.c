@@ -4,7 +4,7 @@
 
 #include "api.h"
 #include <services/bmi/bmi.h>
-#include <router/routes/errors/errors.h>
+#include <router/routes/error/error.h>
 
 ErrorCode parseApiParameters(const char* bodyStr,
                              float* parsedWeight,
