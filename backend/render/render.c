@@ -32,8 +32,8 @@ ErrorCode readFile(const char* path, char** output) {
 }
 
 ErrorCode renderTemplate(const char* templatePath,
-                         char** keys,
-                         char** values,
+                         const char** keys,
+                         const char** values,
                          char** renderedTemplate) {
     ErrorCode errorCode = NONE_ERROR;
     char *template = NULL;

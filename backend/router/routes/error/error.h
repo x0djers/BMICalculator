@@ -8,5 +8,8 @@
 void sendErrorMessage(struct mg_connection* connection,
                       ErrorCode errorCode);
 
+void handleErrorPage(struct mg_connection* connection,
+                     ErrorCode errorCode);
+
 #endif
 

@@ -4,8 +4,8 @@
 #include <errors/errors.h>
 
 ErrorCode renderTemplate(const char *templatePath,
-                         char **keys,
-                         char **values,
+                         const char **keys,
+                         const char **values,
                          char **renderedTemplate);
 
 #endif
