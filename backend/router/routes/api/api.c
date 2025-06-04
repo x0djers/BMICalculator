@@ -45,7 +45,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
     float weight = 0, height = 0;
     char* units = NULL;
 
-    log_info("Started BMI API request processing");
+    log_trace("Started BMI API request processing");
 
     char* body_str = strndup(httpMessage->body.buf, httpMessage->body.len);
     if (body_str == NULL) {
@@ -75,7 +75,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
                           "Content-Type: application/json\r\n",
                           "%s", response);
 
-            log_info("Request to the BMI API successfully processed");
+            log_trace("Request to the BMI API successfully processed");
         }
     }
 

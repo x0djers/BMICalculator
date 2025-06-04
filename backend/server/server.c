@@ -28,7 +28,7 @@ ErrorCode createServer(Server* server, ServerAddress address) {
     }
 
     if (errorCode == NONE_ERROR) {
-        log_info("Server created successfully");
+        log_trace("Server created successfully");
     } else {
         log_error("Creation server failed with error %d", errorCode);
     }

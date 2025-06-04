@@ -24,17 +24,17 @@ ErrorCode handleStatic(struct mg_connection* connection,
                               struct mg_http_message* httpMessage) {
     ErrorCode errorCode = NONE_ERROR;
 
-    log_info("Handling request for URI: %.*s",
+    log_trace("Handling request for URI: %.*s",
              (int)httpMessage->uri.len, httpMessage->uri.buf);
 
     char requiredPath[PATH_MAX];
 
     getRequiredPath(STATIC_DIR, httpMessage->uri, requiredPath, PATH_MAX);
 
-    log_info("Resolved static file path: %s", requiredPath);
+    log_trace("Resolved static file path: %s", requiredPath);
 
     if (isValidStaticFile(requiredPath)) {
-        log_info("Static file found: %s", requiredPath);
+        log_trace("Static file found: %s", requiredPath);
         const struct mg_http_serve_opts opts = {
             .root_dir = STATIC_DIR,
         };
