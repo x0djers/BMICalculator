@@ -8,6 +8,7 @@ const int errorsHttpCodes[ERRORS_COUNT] = {
     [INVALID_SERVER_CONFIG_ERROR] = 500,
     [PAGE_NOT_FOUND_ERROR] = 404,
     [FILE_NOT_FOUND_ERROR] = 404,
+    [FILE_READ_ERROR] = 404,
     [INVALID_API_REQUEST_ERROR]  = 400,
     [INVALID_API_PARAMETERS_ERROR] = 422
 };
@@ -20,6 +21,7 @@ const char* errorsMessages[ERRORS_COUNT] = {
     [INVALID_SERVER_CONFIG_ERROR] = "Invalid server configuration.",
     [PAGE_NOT_FOUND_ERROR] = "Requested page not found.",
     [FILE_NOT_FOUND_ERROR] = "Requested file not found.",
+    [FILE_READ_ERROR] = "Reading error of the requested file.",
     [INVALID_API_REQUEST_ERROR]  = "Invalid API request format.",
     [INVALID_API_PARAMETERS_ERROR] = "Invalid or missing API parameters."
 };
