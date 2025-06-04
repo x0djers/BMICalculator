@@ -4,11 +4,17 @@
 #include <mongoose.h>
 
 #include "server.h"
+
+#include <config/config.h>
 #include <router/router.h>
 
 void getServerAddress(ServerAddress *addr) {
-    snprintf(addr->fullUrl, sizeof(addr->fullUrl),
-             "http://%s:%d", addr->host, addr->port);
+    snprintf(addr->fullUrl,
+             sizeof(addr->fullUrl),
+             "%s://%s:%d",
+             globalConfig.protocol,
+             addr->host,
+             addr->port);
 }
 
 ErrorCode createServer(Server* server, ServerAddress address) {

@@ -3,6 +3,8 @@
 
 #include <errors/errors.h>
 
+struct mg_connection;
+
 typedef void (*Router)(struct mg_connection *, int, void *);
 
 typedef struct {

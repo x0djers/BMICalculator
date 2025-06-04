@@ -5,6 +5,7 @@
 
 #include "pages.h"
 #include <constants/constants.h>
+#include <config/config.h>
 #include <router/routes/error/error.h>
 
 void getRequiredPagePath(const char* baseDir,
@@ -12,7 +13,7 @@ void getRequiredPagePath(const char* baseDir,
                      char* outputPath,
                      const size_t outputPathLen) {
     if (uri.len == 1 && uri.buf[0] == '/') {
-        snprintf(outputPath, outputPathLen, HONE_DIR);
+        snprintf(outputPath, outputPathLen, globalConfig.homePage);
     } else {
         snprintf(outputPath,
                  outputPathLen,
@@ -29,7 +30,7 @@ ErrorCode handlePage(struct mg_connection* connection,
     struct stat st;
     char pagePath[256];
 
-    getRequiredPagePath(PAGES_DIR,
+    getRequiredPagePath(globalConfig.pagesDir,
                         httpMessage->uri,
                         pagePath,
                         sizeof(pagePath));

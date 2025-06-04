@@ -1,18 +1,24 @@
 #include <log.h>
 
+#include <config/config.h>
 #include <server/server.h>
 
-
 int main() {
-    log_set_level(LOG_INFO);
+    ErrorCode errorCode = loadConfig();
 
-    Server server;
+    if (errorCode == NONE_ERROR) {
+        log_set_level(globalConfig.logLevel);
 
-    static ServerAddress localHost = {.host="127.0.0.1", .port=8800};
+        Server server;
 
-    createServer(&server, localHost);
-    runServer(&server);
-    stopServer(&server);
+        static ServerAddress localHost;
+        localHost.host = globalConfig.host;
+        localHost.port = globalConfig.port;
 
-    return 0;
+        errorCode = createServer(&server, localHost);
+        if (errorCode == NONE_ERROR) {
+            runServer(&server);
+            stopServer(&server);
+        }
+    }
 }

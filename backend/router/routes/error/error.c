@@ -1,6 +1,8 @@
 #include <log.h>
 
 #include "error.h"
+
+#include <config/config.h>
 #include <render/render.h>
 #include <errors/errors.h>
 #include <constants/constants.h>
@@ -29,7 +31,7 @@ void handleErrorPage(struct mg_connection* connection,
 								  errorsMessages[errorCode],
 								  NULL};
 
-	const ErrorCode renderPageStatus = renderTemplate(ERROR_PAGE_DIR,
+	const ErrorCode renderPageStatus = renderTemplate(globalConfig.errorPage,
 													  renderKeys,
 													  renderValues,
 													  &errorPage);

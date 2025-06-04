@@ -4,7 +4,7 @@
 #include <mongoose.h>
 
 #include "static.h"
-#include <constants/constants.h>
+#include <config/config.h>
 #include <router/routes/error/error.h>
 
 void getRequiredPath(const char* baseDir,
@@ -29,14 +29,17 @@ ErrorCode handleStatic(struct mg_connection* connection,
 
     char requiredPath[PATH_MAX];
 
-    getRequiredPath(STATIC_DIR, httpMessage->uri, requiredPath, PATH_MAX);
+    getRequiredPath(globalConfig.staticDir,
+                    httpMessage->uri,
+                    requiredPath,
+                    PATH_MAX);
 
     log_trace("Resolved static file path: %s", requiredPath);
 
     if (isValidStaticFile(requiredPath)) {
         log_trace("Static file found: %s", requiredPath);
         const struct mg_http_serve_opts opts = {
-            .root_dir = STATIC_DIR,
+            .root_dir = globalConfig.staticDir,
         };
         mg_http_serve_file(connection, httpMessage, requiredPath, &opts);
     } else {
