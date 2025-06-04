@@ -10,35 +10,53 @@
 #include "routes/static/static.h"
 #include <constants/constants.h>
 
+#include "routes/error/error.h"
+
+static const struct Route routes[] = {
+    {HOME_PAGE_PATTERN, "GET", handlePage},
+    {INPUT_PAGE_PATTERN, "GET", handlePage},
+
+    {RESULT_PAGE_PATTERN, "GET", handlePage},
+
+    {BMI_API_PAGE_PATTERN, "POST", handleBmiApi},
+
+    {STYLES_PATTERN, "GET", handleStatic},
+    {JS_PATTERN, "GET", handleStatic},
+
+    {NULL, NULL, NULL }
+};
+
 void routeRequest(struct mg_connection *connection, const int event, void *eventData) {
     if (event == MG_EV_HTTP_MSG) {
+        bool isRouteFound = false;
         struct mg_http_message *httpMessage = eventData;
         const struct mg_str uri = httpMessage->uri;
+        const struct mg_str method = httpMessage->method;
 
-        log_info("Request: %.*s", (int)uri.len, uri.buf);
+        log_trace("Request: %.*s  Method: %.*s",
+                  (int)uri.len, uri.buf,
+                  (int)method.len, method.buf);
 
-        if (mg_match(uri, mg_str("/"), NULL) ||
-            mg_match(uri, mg_str("/input"), NULL)) {
-            handlePage(connection, httpMessage);
+        for (const struct Route* route = routes;
+             route->uriPattern != NULL && !isRouteFound; route++) {
+            if (mg_match(uri, mg_str(route->uriPattern), NULL)) {
+                if (route->httpMethod &&
+                    mg_match(method, mg_str(route->httpMethod), NULL)) {
+                        isRouteFound = true;
+                } else if (!route->httpMethod) {
+                    isRouteFound = true;
+                }
 
-        } else if (mg_match(uri, mg_str("/result"), NULL)) {
-            handlePage(connection, httpMessage);
+                if (isRouteFound) {
+                    route->handler(connection, httpMessage);
+                }
+            }
+        }
 
-        } else if (mg_match(uri, mg_str("/api/bmi"), NULL) &&
-                   mg_match(httpMessage->method, mg_str("POST"), NULL)) {
-            handleBmiApi(connection, httpMessage);
-
-        } else if (mg_match(uri, mg_str("/styles/*"), NULL) ||
-                   mg_match(uri, mg_str("/js/*"), NULL)) {
-            handleStatic(connection, httpMessage);
-
-        } else {
-            log_error("404 Not Found: %.*s", (int)uri.len, uri.buf);
-            mg_http_reply(connection,
-                          404,
-                          "Content-Type: %s\r\n",
-                          MIME_PLAIN,
-                          "404 Not Found\n");
+        if (!isRouteFound) {
+            log_warn("No route for the path was found:  %.*s",
+                     (int)uri.len, uri.buf);
+            handleErrorPage(connection, PAGE_NOT_FOUND_ERROR);
         }
     }
 }

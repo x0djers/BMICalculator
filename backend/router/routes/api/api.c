@@ -39,7 +39,7 @@ ErrorCode parseApiParameters(const char* bodyStr,
 
 
 ErrorCode handleBmiApi(struct mg_connection* connection,
-                              const struct mg_http_message* httpMessage) {
+                       struct mg_http_message* httpMessage) {
     ErrorCode errorCode = NONE_ERROR;
 
     float weight = 0, height = 0;
@@ -55,7 +55,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
     } else {
         errorCode = parseApiParameters(body_str, &weight, &height, &units);
 
-        log_trace("Parsed parameters: weight=%s, height=%s, units=%s",
+        log_trace("Parsed parameters: weight=%.2f, height=%.2f, units=%s",
                   weight, height, units);
 
         if (errorCode == INVALID_API_REQUEST_ERROR ||
@@ -65,7 +65,7 @@ ErrorCode handleBmiApi(struct mg_connection* connection,
         } else {
             const float bmi = calculateBMI(height, weight, units);
 
-            log_trace("Calculated BMI: %s", bmi);
+            log_trace("Calculated BMI: %.2f", bmi);
 
             char response[100];
             snprintf(response, sizeof(response), "{\"bmi\": %.2f}", bmi);

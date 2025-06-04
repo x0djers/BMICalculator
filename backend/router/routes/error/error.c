@@ -7,9 +7,10 @@
 
 void sendErrorMessage(struct mg_connection* connection,
                       const ErrorCode errorCode) {
+	const char* headers = "Content-Type: " MIME_PLAIN "\r\n";
 	mg_http_reply(connection,
               	  errorsHttpCodes[errorCode],
-              	  MIME_PLAIN,
+              	  headers,
               	  errorsMessages[errorCode]);
 }
 
@@ -36,10 +37,10 @@ void handleErrorPage(struct mg_connection* connection,
 	if (renderPageStatus == NONE_ERROR && errorPage) {
 		log_trace("Sending error page response with HTTP code %d",
 				  errorsHttpCodes[errorCode]);
-		const char* contentType = "Content-Type: " MIME_HTML;
+		const char* headers = "Content-Type: " MIME_HTML "\r\n";
 		mg_http_reply(connection,
 					  errorsHttpCodes[errorCode],
-					  contentType,
+					  headers,
 					  "%s",
 					  errorPage);
 		free(errorPage);

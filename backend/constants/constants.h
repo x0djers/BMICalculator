@@ -10,6 +10,13 @@
 #define ERROR_PAGE_DIR TEMPLATES_DIR "/error.html"
 #define HONE_DIR INPUT_PAGE_DIR
 
+#define HOME_PAGE_PATTERN "/"
+#define INPUT_PAGE_PATTERN "/input"
+#define RESULT_PAGE_PATTERN "/result"
+#define BMI_API_PAGE_PATTERN "/api/bmi"
+#define STYLES_PATTERN "/styles/*"
+#define JS_PATTERN "/js/*"
+
 #define MIME_HTML "text/html"
 #define MIME_CSS "text/css"
 #define MIME_JS "application/javascript"
